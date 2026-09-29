@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout | Venus Footwear Direct</title>
+  <meta name="description" content="Secure and encrypted checkout for your Venus Footwear order. Free shipping across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: #F7F4EE;">
+
+  <!-- Minimal Checkout Header -->
+  <header class="checkout-header">
+    <div class="container checkout-header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark">V</span>
+        <div class="logo-text-group">
+          <span class="brand-name">VENUS</span>
+          <span class="brand-sub">DIRECT FROM FACTORY</span>
+        </div>
+      </a>
+      <div class="checkout-security-badge">
+        <i class="fa-solid fa-lock"></i>
+        <span>256-Bit SSL Encrypted & 100% Safe Checkout</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main" style="padding: 40px 0 80px;">
+    <div class="container">
+      
+      <div id="checkoutEmptyMessage" style="display: none; text-align: center; padding: 60px 20px; background: #FFF; border-radius: 20px; border: 1px solid var(--color-border); max-width: 600px; margin: 0 auto;">
+        <i class="fa-solid fa-bag-shopping" style="font-size: 3.5rem; color: var(--color-border); margin-bottom: 20px;"></i>
+        <h2>Your Shopping Bag is Empty</h2>
+        <p style="color: var(--color-text-muted); margin: 10px 0 24px;">Please add items to your cart before proceeding to checkout.</p>
+        <a href="shop.html" class="btn btn-primary">Return to Catalog</a>
+      </div>
+
+      <div class="checkout-grid" id="checkoutMainGrid">
+        
+        <!-- Left: Address & Payment Form -->
+        <div class="checkout-form-col">
+          
+          <!-- Step 1: Contact Information -->
+          <div class="checkout-card">
+            <div class="checkout-step-title">
+              <span class="step-num">1</span>
+              <h3>Contact Details</h3>
+            </div>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Mobile Number (for delivery SMS updates) *</label>
+                <input type="tel" id="checkoutPhone" placeholder="+91 98765 43210" required>
+              </div>
+              <div class="form-group full-width">
+                <label>Email Address (for order invoice) *</label>
+                <input type="email" id="checkoutEmail" placeholder="yourname@gmail.com" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Delivery Address -->
+          <div class="checkout-card">
+            <div class="checkout-step-title">
+              <span class="step-num">2</span>
+              <h3>Shipping Address in India</h3>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" id="checkoutFirstName" placeholder="e.g. Rahul" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" id="checkoutLastName" placeholder="e.g. Verma" required>
+              </div>
+              <div class="form-group full-width">
+                <label>House / Flat / Building No. & Street *</label>
+                <input type="text" id="checkoutAddress" placeholder="Flat 402, Sunshine Apts, MG Road" required>
+              </div>
+              <div class="form-group">
+                <label>PIN Code *</label>
+                <input type="text" id="checkoutPincode" placeholder="e.g. 110001" maxlength="6" required>
+              </div>
+              <div class="form-group">
+                <label>City / Town *</label>
+                <input type="text" id="checkoutCity" placeholder="e.g. New Delhi" required>
+              </div>
+              <div class="form-group full-width">
+                <label>State *</label>
+                <select id="checkoutState">
+                  <option value="Delhi">Delhi NCR</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Other">Other States</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Payment Method -->
+          <div class="checkout-card">
+            <div class="checkout-step-title">
+              <span class="step-num">3</span>
+              <h3>Choose Payment Method</h3>
+            </div>
+            <div class="payment-method-selector">
+              <label class="pay-option active">
+                <input type="radio" name="paymentOption" value="upi" checked onchange="handlePaymentChange(this)">
+                <div class="pay-option-content">
+                  <div class="pay-option-title">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <strong>UPI & Instant QR (Google Pay, PhonePe, Paytm, BHIM)</strong>
+                  </div>
+                  <span class="pay-desc">Instant confirmation + Free direct dispatch</span>
+                </div>
+              </label>
+
+              <label class="pay-option">
+                <input type="radio" name="paymentOption" value="cards" onchange="handlePaymentChange(this)">
+                <div class="pay-option-content">
+                  <div class="pay-option-title">
+                    <i class="fa-regular fa-credit-card"></i>
+                    <strong>Debit / Credit Card & NetBanking</strong>
+                  </div>
+                  <span class="pay-desc">Visa, MasterCard, RuPay, Maestro & Major Indian Banks</span>
+                </div>
+              </label>
+
+              <label class="pay-option">
+                <input type="radio" name="paymentOption" value="cod" onchange="handlePaymentChange(this)">
+                <div class="pay-option-content">
+                  <div class="pay-option-title">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <strong>Cash on Delivery (COD)</strong>
+                  </div>
+                  <span class="pay-desc">Pay in cash upon doorstep delivery</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-place-order" onclick="placeOrder()">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>Place Order Now</span>
+          </button>
+        </div>
+
+        <!-- Right: Order Summary Box -->
+        <div class="checkout-summary-col">
+          <div class="checkout-summary-card">
+            <h3>Order Summary (<span id="summaryItemCount">0</span> items)</h3>
+            
+            <div class="summary-items-list" id="summaryItemsList">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="coupon-box" style="margin-top: 16px;">
+              <input type="text" id="couponInput" placeholder="Discount coupon" value="VENUS10">
+              <button type="button" class="btn-coupon" onclick="applyCoupon(); renderCheckoutSummary();">Apply</button>
+            </div>
+
+            <div class="cart-summary-breakdown" style="margin-top: 20px;">
+              <div class="summary-line"><span>Subtotal</span><span id="coSubtotal">₹0</span></div>
+              <div class="summary-line discount-line" id="coDiscountLine" style="display: none;">
+                <span>Coupon Discount (10%)</span><span id="coDiscount">-₹0</span>
+              </div>
+              <div class="summary-line"><span>Shipping to India</span><span style="color: var(--color-success); font-weight: 700;">FREE</span></div>
+              <div class="summary-line total-line"><strong>Total Payable</strong><strong id="coFinalTotal" style="font-size: 1.3rem; color: var(--color-primary);">₹0</strong></div>
+            </div>
+
+            <div class="checkout-guarantee-box">
+              <div class="guarantee-line"><i class="fa-solid fa-truck-fast"></i> Dispatched within 24 hours from Bahadurgarh plant</div>
+              <div class="guarantee-line"><i class="fa-solid fa-rotate-left"></i> 7-Day doorstep size replacement guarantee</div>
+              <div class="guarantee-line"><i class="fa-solid fa-award"></i> Genuine Venus Footarts Limited manufacturing</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Order Confirmation Overlay -->
+      <div class="modal-overlay" id="orderSuccessModal" aria-hidden="true">
+        <div class="modal-card" style="max-width: 540px; padding: 40px; text-align: center;">
+          <div style="width: 70px; height: 70px; background-color: var(--color-success-bg); color: var(--color-success); font-size: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Order Confirmed!</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: 20px;">
+            Thank you for stepping into comfort. Order ID: <strong id="confirmedOrderId" style="color: var(--color-text-main);">#VENUS-84921</strong>.
+          </p>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 30px;">
+            We have sent full tracking details and GST invoice to your phone & email. Dispatched directly from our Bahadurgarh facility.
+          </p>
+          <a href="index.html" class="btn btn-primary" style="width: 100%;">
+            <span>Return to Home</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    function renderCheckoutSummary() {
+      const mainGrid = document.getElementById('checkoutMainGrid');
+      const emptyMsg = document.getElementById('checkoutEmptyMessage');
+      const itemsList = document.getElementById('summaryItemsList');
+      const countEl = document.getElementById('summaryItemCount');
+
+      if (!state.cart || state.cart.length === 0) {
+        if (mainGrid) mainGrid.style.display = 'none';
+        if (emptyMsg) emptyMsg.style.display = 'block';
+        return;
+      }
+
+      if (mainGrid) mainGrid.style.display = 'grid';
+      if (emptyMsg) emptyMsg.style.display = 'none';
+
+      const totalQty = state.cart.reduce((s, i) => s + i.qty, 0);
+      const subtotal = state.cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      if (countEl) countEl.textContent = totalQty;
+
+      if (itemsList) {
+        itemsList.innerHTML = state.cart.map(item => `
+          <div class="summary-item-row">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="summary-item-desc">
+              <h5>${item.name}</h5>
+              <span>Size: ${item.size} • Qty: ${item.qty}</span>
+            </div>
+            <strong>₹${item.price * item.qty}</strong>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('coSubtotal').textContent = `₹${subtotal}`;
+      
+      let discountAmount = 0;
+      const coDiscountLine = document.getElementById('coDiscountLine');
+      const coDiscount = document.getElementById('coDiscount');
+      if (state.isCouponApplied && subtotal > 0) {
+        discountAmount = Math.round(subtotal * 0.10);
+        coDiscountLine.style.display = 'flex';
+        coDiscount.textContent = `-₹${discountAmount}`;
+      } else {
+        coDiscountLine.style.display = 'none';
+      }
+
+      const finalTotal = Math.max(0, subtotal - discountAmount);
+      document.getElementById('coFinalTotal').textContent = `₹${finalTotal}`;
+    }
+
+    function handlePaymentChange(radio) {
+      document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('active'));
+      radio.closest('.pay-option').classList.add('active');
+    }
+
+    function placeOrder() {
+      const phone = document.getElementById('checkoutPhone').value.trim();
+      const fname = document.getElementById('checkoutFirstName').value.trim();
+      const addr = document.getElementById('checkoutAddress').value.trim();
+      const pin = document.getElementById('checkoutPincode').value.trim();
+
+      if (!phone || !fname || !addr || !pin) {
+        showToast('Please fill in your Contact and Shipping details.');
+        return;
+      }
+
+      const orderId = '#VENUS-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('confirmedOrderId').textContent = orderId;
+
+      // Clear Cart
+      state.cart = [];
+      saveState();
+
+      const modal = document.getElementById('orderSuccessModal');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+  </script>
+</body>
+</html>

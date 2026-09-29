@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Footwear | Venus Footwear — Men, Women & Kids Catalog</title>
+  <meta name="description" content="Explore Venus Footwear's complete collection of PU Chappals, Comfort Sandals, Hawai Flip-Flops, School Shoes, and EVA Clogs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Strip -->
+  <aside class="promo-strip">
+    <div class="container promo-inner">
+      <div class="promo-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span><strong>FREE SHIPPING</strong> on orders above ₹499 across India</span>
+      </div>
+      <div class="promo-item hide-mobile">
+        <i class="fa-solid fa-tag"></i>
+        <span>Use coupon <strong>VENUS10</strong> for extra 10% off</span>
+      </div>
+      <div class="promo-item hide-mobile">
+        <i class="fa-solid fa-award"></i>
+        <span>Since 1982 • 40+ Years of Craftsmanship</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Main Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <button class="mobile-nav-toggle" id="mobileNavBtn" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark">V</span>
+        <div class="logo-text-group">
+          <span class="brand-name">VENUS</span>
+          <span class="brand-sub">FOOTWEAR • EST. 1982</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <div class="mobile-nav-header">
+          <span class="brand-name">VENUS</span>
+          <button class="close-nav-btn" id="closeNavBtn">&times;</button>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="shop.html?gender=Men" class="nav-link">Men</a></li>
+          <li class="nav-item"><a href="shop.html?gender=Women" class="nav-link">Women</a></li>
+          <li class="nav-item"><a href="shop.html?gender=Kids" class="nav-link">Kids</a></li>
+          <li class="nav-item"><a href="shop.html?occasion=Comfort" class="nav-link">Everyday Comfort</a></li>
+          <li class="nav-item"><a href="shop.html?category=School Shoes" class="nav-link">School Shoes</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">Heritage & Factory</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Support & Dealers</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn search-trigger" id="searchTriggerBtn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="shop.html?view=wishlist" class="icon-btn" id="wishlistTriggerBtn" aria-label="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+        <button class="icon-btn cart-trigger" id="cartTriggerBtn" aria-label="Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Search Drawer -->
+  <div class="search-drawer" id="searchDrawer" aria-hidden="true">
+    <div class="search-drawer-inner">
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="search" id="siteSearchInput" placeholder="Search shoes, sandals, PU chappals, school shoes, size..." autocomplete="off">
+        <button class="close-search-btn" id="closeSearchBtn">&times;</button>
+      </div>
+      <div class="search-quick-tags">
+        <span>Popular:</span>
+        <button class="tag-pill" onclick="applySearchQuery('PU Chappal')">PU Chappal</button>
+        <button class="tag-pill" onclick="applySearchQuery('School Shoes')">School Shoes</button>
+        <button class="tag-pill" onclick="applySearchQuery('Sandals')">Sandals</button>
+        <button class="tag-pill" onclick="applySearchQuery('Hawai')">Hawai</button>
+        <button class="tag-pill" onclick="applySearchQuery('EVA')">EVA Clogs</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <main class="page-main">
+    <!-- Breadcrumbs & Collection Banner -->
+    <div class="collection-hero-bar">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span id="breadcrumbCategory">All Footwear Collection</span>
+        </nav>
+        <div class="collection-title-row">
+          <div>
+            <h1 class="collection-page-title" id="pageTitle">Complete Footwear Catalog</h1>
+            <p class="collection-page-desc" id="pageDesc">Explore everyday comfort footwear engineered with 40+ years of manufacturing expertise.</p>
+          </div>
+          <div class="collection-count-badge">
+            <span id="productCountNum">10</span> styles available
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shop Main Layout: Sidebar + Product Grid -->
+    <section class="section shop-section">
+      <div class="container shop-layout-grid">
+        
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar">
+          <div class="filter-header">
+            <h3><i class="fa-solid fa-sliders"></i> Filter Catalog</h3>
+            <button class="clear-filters-btn" onclick="resetAllShopFilters()">Reset</button>
+          </div>
+
+          <!-- Active Filter Tags Box -->
+          <div class="active-filter-tags" id="activeFilterTags"></div>
+
+          <!-- Gender Filter -->
+          <div class="filter-group">
+            <h4>Audience</h4>
+            <div class="filter-options">
+              <label class="custom-checkbox">
+                <input type="radio" name="genderFilter" value="all" checked onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>All Audiences</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="radio" name="genderFilter" value="Men" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Men's Range</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="radio" name="genderFilter" value="Women" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Women's Range</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="radio" name="genderFilter" value="Kids" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Kids' Range</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Category / Material Filter -->
+          <div class="filter-group">
+            <h4>Footwear Type</h4>
+            <div class="filter-options">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="PU Chappal" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>PU Comfort Chappals</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="Sandals" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Sandals & Floaters</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="Hawai" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Hawai Flip-Flops</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="School Shoes" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>School Shoes</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="EVA" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>EVA Ultralight Clogs</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="PVC" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>PVC Rainwear</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="categoryCheckbox" value="Textile" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Textile Walking Shoes</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Occasion / Use-Case -->
+          <div class="filter-group">
+            <h4>Shop by Occasion</h4>
+            <div class="filter-options">
+              <label class="custom-checkbox">
+                <input type="checkbox" class="occasionCheckbox" value="Comfort" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Everyday Comfort</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="occasionCheckbox" value="Work" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>School & Duty</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="occasionCheckbox" value="Festive" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Festive & Ethnic</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" class="occasionCheckbox" value="Monsoon" onchange="handleFilterChange()">
+                <span class="checkmark"></span>
+                <span>Monsoon & Outdoor</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="filter-group">
+            <h4>Price Range</h4>
+            <div class="price-slider-wrap">
+              <input type="range" id="priceRangeInput" min="150" max="800" step="50" value="800" oninput="handlePriceSlider(this.value)">
+              <div class="price-range-labels">
+                <span>₹150</span>
+                <span>Max: <strong id="priceDisplay">₹800</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Size Filter Pills -->
+          <div class="filter-group">
+            <h4>Size (UK/IND)</h4>
+            <div class="size-filter-grid" id="sizeFilterGrid">
+              <button class="size-filter-btn" onclick="toggleSizeFilter(4, this)">4</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(5, this)">5</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(6, this)">6</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(7, this)">7</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(8, this)">8</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(9, this)">9</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(10, this)">10</button>
+              <button class="size-filter-btn" onclick="toggleSizeFilter(11, this)">11</button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Catalog Listing -->
+        <div class="shop-content-wrap">
+          <!-- Control Bar (Sort, View Mode) -->
+          <div class="shop-controls-bar">
+            <div class="mobile-filter-btn-wrap">
+              <button class="btn btn-secondary mobile-filter-toggle" onclick="toggleMobileSidebar()">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Filters (<span id="activeFilterCount">0</span>)</span>
+              </button>
+            </div>
+
+            <div class="sort-wrap">
+              <label for="sortSelect">Sort By:</label>
+              <select id="sortSelect" onchange="handleSortChange(this.value)">
+                <option value="featured">Featured / Bestsellers</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Customer Rating</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Grid Display -->
+          <div class="product-grid shop-product-grid" id="shopCatalogGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" aria-hidden="true">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <div class="cart-title-wrap">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <h3>Your Bag (<span id="cartTotalItems">0</span>)</h3>
+        </div>
+        <button class="close-drawer-btn" id="closeCartBtn">&times;</button>
+      </div>
+      <div class="shipping-progress-box">
+        <div class="shipping-msg" id="shippingMsg">
+          Add items to unlock <strong>FREE Delivery!</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
+        </div>
+      </div>
+      <div class="cart-items-body" id="cartItemsList"></div>
+      <div class="cart-footer" id="cartFooter">
+        <div class="coupon-box">
+          <input type="text" id="couponInput" placeholder="Discount coupon" value="VENUS10">
+          <button type="button" class="btn-coupon" onclick="applyCoupon()">Apply</button>
+        </div>
+        <div class="cart-summary-breakdown">
+          <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+          <div class="summary-line discount-line" id="discountLine" style="display: none;">
+            <span>Coupon Discount (10%)</span><span id="cartDiscount">-₹0</span>
+          </div>
+          <div class="summary-line"><span>Shipping</span><span>FREE</span></div>
+          <div class="summary-line total-line"><strong>Total Amount</strong><strong id="cartFinalTotal">₹0</strong></div>
+        </div>
+        <a href="checkout.html" class="btn btn-primary btn-checkout">
+          <span>Proceed to Checkout</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sticky Bottom Bar -->
+  <div class="mobile-sticky-bar">
+    <a href="index.html" class="mobile-bar-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="shop.html" class="mobile-bar-item active">
+      <i class="fa-solid fa-shapes"></i>
+      <span>Catalog</span>
+    </a>
+    <button class="mobile-bar-item" onclick="openSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Search</span>
+    </button>
+    <button class="mobile-bar-item" onclick="openCart()">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>Bag (<span id="mobileCartCount">0</span>)</span>
+    </button>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-notification" id="toastBox">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span class="toast-text" id="toastMessage">Item added to bag</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <span class="logo-mark">V</span>
+            <div class="logo-text-group">
+              <span class="brand-name">VENUS</span>
+              <span class="brand-sub">FOOTARTS LIMITED • EST. 1982</span>
+            </div>
+          </a>
+          <p class="footer-tagline">Engineered everyday comfort for Indian families. 40+ years of manufacturing heritage.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html?gender=Men">Men's Footwear</a></li>
+            <li><a href="shop.html?gender=Women">Women's Footwear</a></li>
+            <li><a href="shop.html?gender=Kids">Kids' School Shoes</a></li>
+            <li><a href="shop.html?category=Hawai">Pure Rubber Hawai</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Venus Heritage</a></li>
+            <li><a href="about.html#manufacturing">Manufacturing Unit</a></li>
+            <li><a href="contact.html#dealers">Dealership Network</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Track Order</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+            <li><a href="contact.html">Size Chart Guide</a></li>
+            <li><a href="contact.html">Help & FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Venus Footarts Limited. All Rights Reserved.</p>
+          <div class="payment-methods">
+            <span><i class="fa-solid fa-lock"></i> 100% Safe Checkout (UPI / Cards / COD)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Shop-specific filter script
+    let shopFilters = {
+      gender: 'all',
+      categories: [],
+      occasions: [],
+      maxPrice: 800,
+      sizes: [],
+      sortBy: 'featured'
+    };
+
+    function parseQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('gender')) {
+        shopFilters.gender = params.get('gender');
+        const radio = document.querySelector(`input[name="genderFilter"][value="${shopFilters.gender}"]`);
+        if (radio) radio.checked = true;
+      }
+      if (params.has('category')) {
+        const cat = params.get('category');
+        shopFilters.categories = [cat];
+        document.querySelectorAll('.categoryCheckbox').forEach(cb => {
+          if (cb.value.toLowerCase() === cat.toLowerCase()) cb.checked = true;
+        });
+      }
+      if (params.has('occasion')) {
+        const occ = params.get('occasion');
+        shopFilters.occasions = [occ];
+        document.querySelectorAll('.occasionCheckbox').forEach(cb => {
+          if (cb.value.toLowerCase() === occ.toLowerCase()) cb.checked = true;
+        });
+      }
+      if (params.get('view') === 'wishlist') {
+        document.getElementById('pageTitle').textContent = 'Your Saved Footwear Wishlist';
+        document.getElementById('pageDesc').textContent = 'All the styles you have saved for later.';
+      }
+      renderShopCatalog();
+    }
+
+    function handleFilterChange() {
+      const selectedGender = document.querySelector('input[name="genderFilter"]:checked')?.value || 'all';
+      shopFilters.gender = selectedGender;
+
+      shopFilters.categories = Array.from(document.querySelectorAll('.categoryCheckbox:checked')).map(cb => cb.value);
+      shopFilters.occasions = Array.from(document.querySelectorAll('.occasionCheckbox:checked')).map(cb => cb.value);
+
+      renderShopCatalog();
+    }
+
+    function handlePriceSlider(val) {
+      shopFilters.maxPrice = parseInt(val, 10);
+      document.getElementById('priceDisplay').textContent = `₹${val}`;
+      renderShopCatalog();
+    }
+
+    function toggleSizeFilter(size, btn) {
+      const idx = shopFilters.sizes.indexOf(size);
+      if (idx > -1) {
+        shopFilters.sizes.splice(idx, 1);
+        btn.classList.remove('selected');
+      } else {
+        shopFilters.sizes.push(size);
+        btn.classList.add('selected');
+      }
+      renderShopCatalog();
+    }
+
+    function handleSortChange(val) {
+      shopFilters.sortBy = val;
+      renderShopCatalog();
+    }
+
+    function resetAllShopFilters() {
+      shopFilters = { gender: 'all', categories: [], occasions: [], maxPrice: 800, sizes: [], sortBy: 'featured' };
+      document.querySelector('input[name="genderFilter"][value="all"]').checked = true;
+      document.querySelectorAll('.categoryCheckbox, .occasionCheckbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.size-filter-btn').forEach(b => b.classList.remove('selected'));
+      document.getElementById('priceRangeInput').value = 800;
+      document.getElementById('priceDisplay').textContent = '₹800';
+      document.getElementById('sortSelect').value = 'featured';
+      renderShopCatalog();
+    }
+
+    function renderShopCatalog() {
+      const grid = document.getElementById('shopCatalogGrid');
+      if (!grid) return;
+
+      const params = new URLSearchParams(window.location.search);
+      const isWishlistView = params.get('view') === 'wishlist';
+
+      let items = PRODUCTS.filter(p => {
+        if (isWishlistView && !state.wishlist.has(p.id)) return false;
+        if (shopFilters.gender !== 'all' && p.gender !== shopFilters.gender) return false;
+        if (shopFilters.categories.length > 0 && !shopFilters.categories.some(c => p.category.toLowerCase().includes(c.toLowerCase()))) return false;
+        if (shopFilters.occasions.length > 0 && !shopFilters.occasions.includes(p.occasion)) return false;
+        if (p.price > shopFilters.maxPrice) return false;
+        if (shopFilters.sizes.length > 0 && !p.sizes.some(s => shopFilters.sizes.includes(s))) return false;
+        return true;
+      });
+
+      // Sorting
+      if (shopFilters.sortBy === 'price-low') {
+        items.sort((a, b) => a.price - b.price);
+      } else if (shopFilters.sortBy === 'price-high') {
+        items.sort((a, b) => b.price - a.price);
+      } else if (shopFilters.sortBy === 'rating') {
+        items.sort((a, b) => b.rating - a.rating);
+      }
+
+      document.getElementById('productCountNum').textContent = items.length;
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #FFF; border-radius: 16px; border: 1px solid var(--color-border);">
+            <i class="fa-solid fa-filter-circle-xmark" style="font-size: 3rem; color: var(--color-border); margin-bottom: 16px;"></i>
+            <h3>No products match your active filters</h3>
+            <p style="color: var(--color-text-muted); margin: 8px 0 20px;">Try adjusting your price range or clearing category filters.</p>
+            <button class="btn btn-primary" onclick="resetAllShopFilters()">Reset All Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = items.map(p => {
+        const isWishlisted = state.wishlist.has(p.id);
+        return `
+          <article class="product-card">
+            <div class="prod-img-box">
+              <a href="product.html?id=${p.id}">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+              </a>
+              <span class="prod-tag-discount">${p.discount}</span>
+              <button class="wishlist-btn-card ${isWishlisted ? 'active' : ''}" 
+                      onclick="toggleWishlist('${p.id}')" aria-label="Add to wishlist">
+                <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+              </button>
+            </div>
+            <div class="prod-details">
+              <span class="prod-category-label">${p.gender}'s • ${p.category}</span>
+              <h3 class="prod-title"><a href="product.html?id=${p.id}">${p.name}</a></h3>
+              <div class="prod-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span>${p.rating} (${p.reviews})</span>
+              </div>
+              <div class="prod-price-row">
+                <span class="current-price">₹${p.price}</span>
+                <span class="original-price">₹${p.origPrice}</span>
+                <span class="save-percent">Save ₹${p.origPrice - p.price}</span>
+              </div>
+              <div class="prod-actions">
+                <a href="product.html?id=${p.id}" class="btn-select-options" style="display: block;">
+                  View Product
+                </a>
+                <button class="btn-quick-view" onclick="addToCart(PRODUCTS.find(x => x.id === '${p.id}'), ${p.sizes[0]})" title="Quick Add">
+                  <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function toggleMobileSidebar() {
+      const sidebar = document.querySelector('.filter-sidebar');
+      sidebar?.classList.toggle('active-mobile');
+    }
+
+    document.addEventListener('DOMContentLoaded', parseQueryParams);
+  </script>
+</body>
+</html>
